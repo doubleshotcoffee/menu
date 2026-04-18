@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Double Shot Cafe - Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg: #12100e;
+            --surface: rgba(255, 255, 255, 0.04);
+            --text-main: #f5f0eb;
+            --text-muted: #a69c92;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html[lang="en"] {
+            direction: ltr;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html[lang="ar"] {
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        html[lang="en"] .ar {
+            display: none !important;
+        }
+
+        html[lang="ar"] .en {
+            display: none !important;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            height: 85px;
+            background: rgba(18, 16, 14, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+            transition: var(--transition);
+            object-fit: cover;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .logo-text {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        /* LANGUAGE BUTTON - always top left */
+        .lang-btn {
+            position: fixed;
+            top: 22px;
+            left: 30px;
+            z-index: 1001;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 85px;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, rgba(30, 26, 24, 0.9) 0%, rgba(18, 16, 14, 1) 100%);
+        }
+
+        .hero-box {
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.25), 0 20px 50px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .hero-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MENU */
+        .menu-container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .category {
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .category.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-header {
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .category-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(18, 16, 14, 1) 0%, rgba(18, 16, 14, 0.25) 100%);
+            z-index: 1;
+        }
+
+        .category h2 {
+            position: relative;
+            font-size: 2.5rem;
+            z-index: 2;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+            font-weight: 700;
+        }
+
+        /* ── Category Background Images ── */
+        .category.espresso .category-header {
+            background-image: url('اسبرسو.webp');
+        }
+
+        .category.hot .category-header {
+            background-image: url('قهوه.jpg');
+        }
+
+        .category.coffee .category-header {
+            background-image: url('قهوه.jpg');
+        }
+
+        .category.iced .category-header {
+            background-image: url('ايس درينك.jpg');
+        }
+
+        .category.frappe .category-header {
+            background-image: url('فرابيه.jpg');
+        }
+
+        .category.smoothie .category-header {
+            background-image: url('اسموزي.jpg');
+        }
+
+        .category.juice .category-header {
+            background-image: url('عصير فريش.jpg');
+        }
+
+        .category.soda .category-header {
+            background-image: url('صودا.jpg');
+        }
+
+        .category.boba .category-header {
+            background-image: url('بوبا.jpg');
+        }
+
+        .category.yogurt .category-header {
+            background-image: url('زبادوه.jpg');
+        }
+
+        .category.extra .category-header {
+            background-image: url('ديزرت.jpg');
+        }
+
+        .items-list {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            background: rgba(18, 16, 14, 0.95);
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 22px 25px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .item-card:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .item-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 6px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            white-space: nowrap;
+            margin-inline-start: 16px;
+        }
+
+
+
+        /* FOOTER */
+        footer {
+            background: #0a0908;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+        }
+
+        .footer-logo {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 2px solid var(--primary);
+            opacity: 0.8;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer-content h3 {
+            color: var(--primary);
+            margin: 15px 0 8px;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            .lang-btn {
+                top: 22px;
+                left: 15px;
+            }
+
+            .hero-box {
+                width: 240px;
+                height: 240px;
+            }
+
+            .category h2 {
+                font-size: 2rem;
+            }
+
+            .items-list {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .item-name {
+                font-size: 1.05rem;
+            }
+
+            .item-price {
+                font-size: 1rem;
+                padding: 5px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LANGUAGE BUTTON -->
+    <button class="lang-btn" id="langToggle">AR</button>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo-container">
+            <img src="Double shot.jpeg" alt="Double Shot Logo">
+            <span class="logo-text">
+                <span class="en">Double Shot</span>
+                <span class="ar">دابل شوت</span>
+            </span>
+        </a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-box">
+            <img src="Double shot.jpeg" alt="Double Shot Logo">
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu-container">
+
+        <!-- ESPRESSO CORNER -->
+        <div class="category espresso">
+            <div class="category-header">
+                <h2><span class="en">Espresso Corner</span><span class="ar">ركن الإسبريسو</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Spanish Latte</span><span
+                            class="ar">سبانش لاتيه</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Latte</span><span
+                            class="ar">لاتيه</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Cappuccino</span><span
+                            class="ar">كابتشينو</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Flat White</span><span class="ar">فلات
+                            وايت</span></span><span class="item-price">65 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Mocha</span><span
+                            class="ar">موكا</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Caramel Mocha</span><span
+                            class="ar">كراميل موكا</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Caramel Macchiato</span><span
+                            class="ar">كراميل ماكياتو</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Hot Chocolate</span><span class="ar">هوت
+                            شوكليت</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Espresso (S/D)</span><span
+                            class="ar">إسبريسو (S/D)</span></span><span class="item-price">45 / 55 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Espresso Macchiato (S/D)</span><span
+                            class="ar">إسبريسو ماكياتو (S/D)</span></span><span class="item-price">50 / 55 EGP</span>
+                </div>
+                <div class="item-card"><span class="item-name"><span class="en">Americano (M/L)</span><span
+                            class="ar">أمريكانو (M/L)</span></span><span class="item-price">45 / 55 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- HOT CORNER -->
+        <div class="category hot">
+            <div class="category-header">
+                <h2><span class="en">Hot Corner</span><span class="ar">مشروبات ساخنة</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Tea (M/L)</span><span class="ar">شاي
+                            (M/L)</span></span><span class="item-price">30 / 35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Tea With Milk (M/L)</span><span
+                            class="ar">شاي بحليب (M/L)</span></span><span class="item-price">45 / 45 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Flavored Tea (M/L)</span><span
+                            class="ar">شاي بنكهات (M/L)</span></span><span class="item-price">30 / 40 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Herbs Mix (M/L)</span><span
+                            class="ar">أعشاب (M/L)</span></span><span class="item-price">40 / 45 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Anise (M/L)</span><span class="ar">ينسون
+                            (M/L)</span></span><span class="item-price">30 / 35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Mint (M/L)</span><span class="ar">نعناع
+                            (M/L)</span></span><span class="item-price">30 / 35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Roselle (M/L)</span><span
+                            class="ar">كركديه (M/L)</span></span><span class="item-price">25 / 35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Cinnamon With Milk (M/L)</span><span
+                            class="ar">قرفة بالحليب (M/L)</span></span><span class="item-price">35 / 45 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Sahlab</span><span class="ar">سحلب
+                            سادة</span></span><span class="item-price">45 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Sahlab Nuts</span><span class="ar">سحلب
+                            مكسرات</span></span><span class="item-price">55 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Sahlab Oreo</span><span class="ar">سحلب
+                            أوريو</span></span><span class="item-price">55 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Sahlab Fruits</span><span
+                            class="ar">سحلب فواكه</span></span><span class="item-price">55 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Karak Tea</span><span class="ar">شاي
+                            كرك</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Hot Cider</span><span class="ar">هوت
+                            سيدر</span></span><span class="item-price">60 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- COFFEE CORNER -->
+        <div class="category coffee">
+            <div class="category-header">
+                <h2><span class="en">Coffee Corner</span><span class="ar">ركن القهوة</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Turkish Coffee (S/D)</span><span
+                            class="ar">قهوة تركي (S/D)</span></span><span class="item-price">40 / 60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">French Coffee (S/D)</span><span
+                            class="ar">قهوة فرنساوي (S/D)</span></span><span class="item-price">45 / 70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Hazelnut Coffee (S/D)</span><span
+                            class="ar">قهوة بندق (S/D)</span></span><span class="item-price">45 / 70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Nutella Coffee (S/D)</span><span
+                            class="ar">قهوة نوتيلا (S/D)</span></span><span class="item-price">55 / 70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Chocolate Coffee (S/D)</span><span
+                            class="ar">قهوة شوكولاتة (S/D)</span></span><span class="item-price">50 / 60 EGP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ICED CORNER -->
+        <div class="category iced">
+            <div class="category-header">
+                <h2><span class="en">Iced Corner</span><span class="ar">ركن المثلجات</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Ice Spanish Latte</span><span
+                            class="ar">أيس سبانش لاتيه</span></span><span class="item-price">85 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Ice Latte</span><span class="ar">أيس
+                            لاتيه</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Ice Mocha</span><span class="ar">أيس
+                            موكا</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Ice Caramel Macchiato</span><span
+                            class="ar">أيس كراميل ماكياتو</span></span><span class="item-price">70 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Ice Chocolate</span><span class="ar">أيس
+                            شوكليت</span></span><span class="item-price">70 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- FRAPPE CORNER -->
+        <div class="category frappe">
+            <div class="category-header">
+                <h2><span class="en">Frappe Corner</span><span class="ar">ركن الفرابيه</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Mocha Frappe</span><span
+                            class="ar">فرابيه موكا</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Vanilla Frappe</span><span
+                            class="ar">فرابيه فانيليا</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Oreo Frappe</span><span
+                            class="ar">فرابيه أوريو</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Vanilla Cream Frappe</span><span
+                            class="ar">فرابيه كريمة فانيليا</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Caramel Cream Frappe</span><span
+                            class="ar">فرابيه كراميل كريمة</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Chocolate Cream Frappe</span><span
+                            class="ar">فرابيه شوكولاتة كريمة</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Coffee Frappe</span><span
+                            class="ar">فرابيه قهوة</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Caramel Frappe</span><span
+                            class="ar">فرابيه كراميل</span></span><span class="item-price">75 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Mango Cream Frappe</span><span
+                            class="ar">فرابيه مانجو</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Strawberry Cream Frappe</span><span
+                            class="ar">فرابيه فراولة</span></span><span class="item-price">60 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- YOGURT CORNER -->
+        <div class="category yogurt">
+            <div class="category-header">
+                <h2><span class="en">Yogurt Corner</span><span class="ar">ركن الزبادي</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Mango Yogurt</span><span
+                            class="ar">زبادي مانجو</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Strawberry Yogurt</span><span
+                            class="ar">زبادي فراولة</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Blueberry Yogurt</span><span
+                            class="ar">زبادي توت</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Peach Yogurt</span><span
+                            class="ar">زبادي خوخ</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Kiwi Yogurt</span><span class="ar">زبادي
+                            كيوي</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Passion Fruit Yogurt</span><span
+                            class="ar">زبادي باشن فروت</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Yogurt Honey</span><span
+                            class="ar">زبادي بالعسل</span></span><span class="item-price">60 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Yogurt Plain</span><span
+                            class="ar">زبادي سادة</span></span><span class="item-price">50 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- SMOOTHIES CORNER -->
+        <div class="category smoothie">
+            <div class="category-header">
+                <h2><span class="en">Smoothies Corner</span><span class="ar">ركن السموذي</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Mango Smoothie</span><span
+                            class="ar">سموذي مانجو</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Strawberry Smoothie</span><span
+                            class="ar">سموذي فراولة</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Blueberry Smoothie</span><span
+                            class="ar">سموذي توت</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Peach Smoothie</span><span
+                            class="ar">سموذي خوخ</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Pineapple Smoothie</span><span
+                            class="ar">سموذي أناناس</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Passionfruit Smoothie</span><span
+                            class="ar">سموذي باشن فروت</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Kiwi Smoothie</span><span
+                            class="ar">سموذي كيوي</span></span><span class="item-price">50 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- SODA CORNER -->
+        <div class="category soda">
+            <div class="category-header">
+                <h2><span class="en">Soda Corner</span><span class="ar">ركن الصودا</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">V.Cola</span><span
+                            class="ar">كولا</span></span><span class="item-price">35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">V.7 Flavors</span><span class="ar">سفن
+                            بنكهات</span></span><span class="item-price">35 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Maxi</span><span
+                            class="ar">ماكسي</span></span><span class="item-price">25 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Twist</span><span
+                            class="ar">تويست</span></span><span class="item-price">40 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Energy Espresso</span><span
+                            class="ar">إنرجي إسبريسو</span></span><span class="item-price">80 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Cherry Cola</span><span class="ar">شيري
+                            كولا</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Mojito</span><span
+                            class="ar">موهيتو</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Sun Shine</span><span class="ar">صن
+                            شاين</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Jelly Cola</span><span class="ar">جيلي
+                            كولا</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Water</span><span
+                            class="ar">مياه</span></span><span class="item-price">15 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Ice Cup</span><span class="ar">كوب
+                            تلج</span></span><span class="item-price">5 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Red Bull</span><span class="ar">ريد
+                            بول</span></span><span class="item-price">65 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Monster</span><span
+                            class="ar">مونستر</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Hot Cup for Indomie</span><span
+                            class="ar">كوب سخن</span></span><span class="item-price">10 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- JUICE CORNER -->
+        <div class="category juice">
+            <div class="category-header">
+                <h2><span class="en">Juice Corner</span><span class="ar">عصائر</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Mango</span><span
+                            class="ar">مانجو</span></span><span class="item-price">55 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Strawberry</span><span
+                            class="ar">فراولة</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Guava</span><span
+                            class="ar">جوافة</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Orange</span><span
+                            class="ar">برتقال</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Tangerine</span><span
+                            class="ar">يوسفي</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Banana with Milk</span><span
+                            class="ar">موز باللبن</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Strawberry with Milk</span><span
+                            class="ar">فراولة باللبن</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Guava with Milk</span><span
+                            class="ar">جوافة باللبن</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Lemon Mint</span><span class="ar">ليمون
+                            نعناع</span></span><span class="item-price">50 EGP</span></div>
+            </div>
+        </div>
+
+        <!-- EXTRAS -->
+        <div class="category extra">
+            <div class="category-header">
+                <h2><span class="en">Extras</span><span class="ar">إضافات</span></h2>
+            </div>
+            <div class="items-list">
+                <div class="item-card"><span class="item-name"><span class="en">Extra Flavor</span><span
+                            class="ar">إضافة نكهة</span></span><span class="item-price">15 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Extra Milk</span><span class="ar">إضافة
+                            لبن</span></span><span class="item-price">15 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Extra Espresso</span><span
+                            class="ar">إضافة إسبريسو</span></span><span class="item-price">25 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Extra Sauce</span><span class="ar">إضافة
+                            صوص</span></span><span class="item-price">15 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Birthday Person</span><span
+                            class="ar">عيد ميلاد</span></span><span class="item-price">50 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Pick (S/L)</span><span class="ar">اختيار
+                            حجم</span></span><span class="item-price">5 / 10 EGP</span></div>
+                <div class="item-card"><span class="item-name"><span class="en">Rollana</span><span
+                            class="ar">رولانا</span></span><span class="item-price">10 EGP</span></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="Double shot.jpeg" alt="Double Shot Logo" class="footer-logo">
+        <div class="footer-content">
+            <h3><a href="https://maps.app.goo.gl/mguoxLLYyzhq49Up7" target="_blank"
+                    style="color: inherit; text-decoration: none;">📍 <span class="en">Location</span><span
+                        class="ar">العنوان</span></a></h3>
+            <p><a href="https://maps.app.goo.gl/mguoxLLYyzhq49Up7" target="_blank"
+                    style="color: inherit; text-decoration: none;"><span class="en">Double Shot Cafe</span><span
+                        class="ar">كافيه دابل شوت</span></a></p>
+            <h3>⏰ <span class="en">Opening Hours</span><span class="ar">مواعيد العمل</span></h3>
+            <p><span class="en">Daily 10 AM – 2 AM</span><span class="ar">يومياً ١٠ صباحاً – ٢ بعد منتصف الليل</span>
+            </p>
+        </div>
+        <div style="margin-top: 40px; font-size: 0.9rem; color: var(--text-muted); text-align: center;">
+            <a href="https://ibrahimahamada27.github.io/My-Protofolio/" target="_blank"
+                style="color: inherit; text-decoration: none; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='inherit'">
+                &copy; 2026 Powered by Eng. Ibrahim A. Hamada
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('langToggle');
+        let isAr = false;
+
+        btn.addEventListener('click', () => {
+            isAr = !isAr;
+            document.documentElement.lang = isAr ? 'ar' : 'en';
+            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+            btn.textContent = isAr ? 'EN' : 'AR';
+        });
+
+        const categories = document.querySelectorAll('.category');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        categories.forEach(cat => observer.observe(cat));
+    </script>
+
+</body>
+
+</html>
