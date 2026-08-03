@@ -1,0 +1,91 @@
+id,category_en,category_ar,name_en,name_ar,price,availability,order,image_key
+1,Coffee Corner,ركن القهوة,Turkish Coffee (S/D),قهوة تركي (S/D),40 / 60 EGP,TRUE,1,قهوه.jpg
+2,Coffee Corner,ركن القهوة,French Coffee (S/D),قهوة فرنساوي (S/D),45 / 70 EGP,TRUE,2,قهوه.jpg
+3,Coffee Corner,ركن القهوة,Hazelnut Coffee (S/D),قهوة بندق (S/D),45 / 70 EGP,TRUE,3,قهوه.jpg
+4,Coffee Corner,ركن القهوة,Nutella Coffee (S/D),قهوة نوتيلا (S/D),55 / 70 EGP,TRUE,4,قهوه.jpg
+5,Coffee Corner,ركن القهوة,Chocolate Coffee (S/D),قهوة شوكولاتة (S/D),50 / 60 EGP,TRUE,5,قهوه.jpg
+6,Espresso Corner,ركن الإسبريسو,Spanish Latte,سبانش لاتيه,75 EGP,TRUE,1,اسبرسو.webp
+7,Espresso Corner,ركن الإسبريسو,Latte,لاتيه,70 EGP,TRUE,2,اسبرسو.webp
+8,Espresso Corner,ركن الإسبريسو,Cappuccino,كابتشينو,70 EGP,TRUE,3,اسبرسو.webp
+9,Espresso Corner,ركن الإسبريسو,Flat White,فلات وايت,65 EGP,TRUE,4,اسبرسو.webp
+10,Espresso Corner,ركن الإسبريسو,Mocha,موكا,75 EGP,TRUE,5,اسبرسو.webp
+11,Espresso Corner,ركن الإسبريسو,Caramel Mocha,كراميل موكا,75 EGP,TRUE,6,اسبرسو.webp
+12,Espresso Corner,ركن الإسبريسو,Caramel Macchiato,كراميل ماكياتو,75 EGP,TRUE,7,اسبرسو.webp
+13,Espresso Corner,ركن الإسبريسو,Hot Chocolate,هوت شوكليت,70 EGP,TRUE,8,اسبرسو.webp
+14,Espresso Corner,ركن الإسبريسو,Espresso (S/D),إسبريسو (S/D),45 / 55 EGP,TRUE,9,اسبرسو.webp
+15,Espresso Corner,ركن الإسبريسو,Espresso Macchiato (S/D),إسبريسو ماكياتو (S/D),50 / 55 EGP,TRUE,10,اسبرسو.webp
+16,Espresso Corner,ركن الإسبريسو,Americano (M/L),أمريكانو (M/L),45 / 55 EGP,TRUE,11,اسبرسو.webp
+17,Hot Corner,مشروبات ساخنة,Tea (M/L),شاي (M/L),30 / 35 EGP,TRUE,1,مشروب ساخن.webp
+18,Hot Corner,مشروبات ساخنة,Tea With Milk (M/L),شاي بحليب (M/L),45 / 45 EGP,TRUE,2,مشروب ساخن.webp
+19,Hot Corner,مشروبات ساخنة,Flavored Tea (M/L),شاي بنكهات (M/L),30 / 40 EGP,TRUE,3,مشروب ساخن.webp
+20,Hot Corner,مشروبات ساخنة,Herbs Mix (M/L),أعشاب (M/L),40 / 45 EGP,TRUE,4,مشروب ساخن.webp
+21,Hot Corner,مشروبات ساخنة,Anise (M/L),ينسون (M/L),30 / 35 EGP,TRUE,5,مشروب ساخن.webp
+22,Hot Corner,مشروبات ساخنة,Mint (M/L),نعناع (M/L),30 / 35 EGP,TRUE,6,مشروب ساخن.webp
+23,Hot Corner,مشروبات ساخنة,Roselle (M/L),كركديه (M/L),25 / 35 EGP,TRUE,7,مشروب ساخن.webp
+24,Hot Corner,مشروبات ساخنة,Cinnamon With Milk (M/L),قرفة بالحليب (M/L),35 / 45 EGP,TRUE,8,مشروب ساخن.webp
+25,Hot Corner,مشروبات ساخنة,Sahlab,سحلب سادة,45 EGP,TRUE,9,مشروب ساخن.webp
+26,Hot Corner,مشروبات ساخنة,Sahlab Nuts,سحلب مكسرات,55 EGP,TRUE,10,مشروب ساخن.webp
+27,Hot Corner,مشروبات ساخنة,Sahlab Oreo,سحلب أوريو,55 EGP,TRUE,11,مشروب ساخن.webp
+28,Hot Corner,مشروبات ساخنة,Sahlab Fruits,سحلب فواكه,55 EGP,TRUE,12,مشروب ساخن.webp
+29,Hot Corner,مشروبات ساخنة,Karak Tea,شاي كرك,50 EGP,TRUE,13,مشروب ساخن.webp
+30,Hot Corner,مشروبات ساخنة,Hot Cider,هوت سيدر,60 EGP,TRUE,14,مشروب ساخن.webp
+31,Iced Corner,ركن المثلجات,Ice Spanish Latte,أيس سبانش لاتيه,85 EGP,TRUE,1,ايس درينك.jpg
+32,Iced Corner,ركن المثلجات,Ice Latte,أيس لاتيه,70 EGP,TRUE,2,ايس درينك.jpg
+33,Iced Corner,ركن المثلجات,Ice Mocha,أيس موكا,70 EGP,TRUE,3,ايس درينك.jpg
+34,Iced Corner,ركن المثلجات,Ice Caramel Macchiato,أيس كراميل ماكياتو,70 EGP,TRUE,4,ايس درينك.jpg
+35,Iced Corner,ركن المثلجات,Ice Chocolate,أيس شوكليت,70 EGP,TRUE,5,ايس درينك.jpg
+36,Frappe Corner,ركن الفرابيه,Mocha Frappe,فرابيه موكا,75 EGP,TRUE,1,فرابيه.jpg
+37,Frappe Corner,ركن الفرابيه,Vanilla Frappe,فرابيه فانيليا,75 EGP,TRUE,2,فرابيه.jpg
+38,Frappe Corner,ركن الفرابيه,Oreo Frappe,فرابيه أوريو,75 EGP,TRUE,3,فرابيه.jpg
+39,Frappe Corner,ركن الفرابيه,Vanilla Cream Frappe,فرابيه كريمة فانيليا,75 EGP,TRUE,4,فرابيه.jpg
+40,Frappe Corner,ركن الفرابيه,Caramel Cream Frappe,فرابيه كراميل كريمة,75 EGP,TRUE,5,فرابيه.jpg
+41,Frappe Corner,ركن الفرابيه,Chocolate Cream Frappe,فرابيه شوكولاتة كريمة,75 EGP,TRUE,6,فرابيه.jpg
+42,Frappe Corner,ركن الفرابيه,Coffee Frappe,فرابيه قهوة,75 EGP,TRUE,7,فرابيه.jpg
+43,Frappe Corner,ركن الفرابيه,Caramel Frappe,فرابيه كراميل,75 EGP,TRUE,8,فرابيه.jpg
+44,Frappe Corner,ركن الفرابيه,Mango Cream Frappe,فرابيه مانجو,60 EGP,TRUE,9,فرابيه.jpg
+45,Frappe Corner,ركن الفرابيه,Strawberry Cream Frappe,فرابيه فراولة,60 EGP,TRUE,10,فرابيه.jpg
+46,Yogurt Corner,ركن الزبادي,Mango Yogurt,زبادي مانجو,60 EGP,TRUE,1,زبادوه.jpg
+47,Yogurt Corner,ركن الزبادي,Strawberry Yogurt,زبادي فراولة,60 EGP,TRUE,2,زبادوه.jpg
+48,Yogurt Corner,ركن الزبادي,Blueberry Yogurt,زبادي توت,60 EGP,TRUE,3,زبادوه.jpg
+49,Yogurt Corner,ركن الزبادي,Peach Yogurt,زبادي خوخ,60 EGP,TRUE,4,زبادوه.jpg
+50,Yogurt Corner,ركن الزبادي,Kiwi Yogurt,زبادي كيوي,60 EGP,TRUE,5,زبادوه.jpg
+51,Yogurt Corner,ركن الزبادي,Passion Fruit Yogurt,زبادي باشن فروت,60 EGP,TRUE,6,زبادوه.jpg
+52,Yogurt Corner,ركن الزبادي,Yogurt Honey,زبادي بالعسل,60 EGP,TRUE,7,زبادوه.jpg
+53,Yogurt Corner,ركن الزبادي,Yogurt Plain,زبادي سادة,50 EGP,TRUE,8,زبادوه.jpg
+54,Juice Corner,عصائر,Mango,مانجو,55 EGP,TRUE,1,عصير فريش.jpg
+55,Juice Corner,عصائر,Strawberry,فراولة,50 EGP,TRUE,2,عصير فريش.jpg
+56,Juice Corner,عصائر,Guava,جوافة,50 EGP,TRUE,3,عصير فريش.jpg
+57,Juice Corner,عصائر,Orange,برتقال,50 EGP,TRUE,4,عصير فريش.jpg
+58,Juice Corner,عصائر,Tangerine,يوسفي,50 EGP,TRUE,5,عصير فريش.jpg
+59,Juice Corner,عصائر,Banana with Milk,موز باللبن,50 EGP,TRUE,6,عصير فريش.jpg
+60,Juice Corner,عصائر,Strawberry with Milk,فراولة باللبن,50 EGP,TRUE,7,عصير فريش.jpg
+61,Juice Corner,عصائر,Guava with Milk,جوافة باللبن,50 EGP,TRUE,8,عصير فريش.jpg
+62,Juice Corner,عصائر,Lemon Mint,ليمون نعناع,50 EGP,TRUE,9,عصير فريش.jpg
+63,Smoothies Corner,ركن السموذي,Mango Smoothie,سموذي مانجو,50 EGP,TRUE,1,اسموزي.jpg
+64,Smoothies Corner,ركن السموذي,Strawberry Smoothie,سموذي فراولة,50 EGP,TRUE,2,اسموزي.jpg
+65,Smoothies Corner,ركن السموذي,Blueberry Smoothie,سموذي توت,50 EGP,TRUE,3,اسموزي.jpg
+66,Smoothies Corner,ركن السموذي,Peach Smoothie,سموذي خوخ,50 EGP,TRUE,4,اسموزي.jpg
+67,Smoothies Corner,ركن السموذي,Pineapple Smoothie,سموذي أناناس,50 EGP,TRUE,5,اسموزي.jpg
+68,Smoothies Corner,ركن السموذي,Passionfruit Smoothie,سموذي باشن فروت,50 EGP,TRUE,6,اسموزي.jpg
+69,Smoothies Corner,ركن السموذي,Kiwi Smoothie,سموذي كيوي,50 EGP,TRUE,7,اسموزي.jpg
+70,Soda Corner,ركن الصودا,V.Cola,كولا,35 EGP,TRUE,1,صودا.jpg
+71,Soda Corner,ركن الصودا,V.7 Flavors,سفن بنكهات,35 EGP,TRUE,2,صودا.jpg
+72,Soda Corner,ركن الصودا,Maxi,ماكسي,25 EGP,TRUE,3,صودا.jpg
+73,Soda Corner,ركن الصودا,Twist,تويست,40 EGP,TRUE,4,صودا.jpg
+74,Soda Corner,ركن الصودا,Energy Espresso,إنرجي إسبريسو,80 EGP,TRUE,5,صودا.jpg
+75,Soda Corner,ركن الصودا,Cherry Cola,شيري كولا,50 EGP,TRUE,6,صودا.jpg
+76,Soda Corner,ركن الصودا,Mojito,موهيتو,50 EGP,TRUE,7,صودا.jpg
+77,Soda Corner,ركن الصودا,Sun Shine,صن شاين,50 EGP,TRUE,8,صودا.jpg
+78,Soda Corner,ركن الصودا,Jelly Cola,جيلي كولا,50 EGP,TRUE,9,صودا.jpg
+79,Soda Corner,ركن الصودا,Water,مياه,15 EGP,TRUE,10,صودا.jpg
+80,Soda Corner,ركن الصودا,Ice Cup,كوب تلج,5 EGP,TRUE,11,صودا.jpg
+81,Soda Corner,ركن الصودا,Red Bull,ريد بول,65 EGP,TRUE,12,صودا.jpg
+82,Soda Corner,ركن الصودا,Monster,مونستر,50 EGP,TRUE,13,صودا.jpg
+83,Soda Corner,ركن الصودا,Hot Cup for Indomie,كوب سخن,10 EGP,TRUE,14,صودا.jpg
+84,Extras,إضافات,Extra Flavor,إضافة نكهة,15 EGP,TRUE,1,Double shot.jpeg
+85,Extras,إضافات,Extra Milk,إضافة لبن,15 EGP,TRUE,2,Double shot.jpeg
+86,Extras,إضافات,Extra Espresso,إضافة إسبريسو,25 EGP,TRUE,3,Double shot.jpeg
+87,Extras,إضافات,Extra Sauce,إضافة صوص,15 EGP,TRUE,4,Double shot.jpeg
+88,Extras,إضافات,Birthday Person,عيد ميلاد,50 EGP,TRUE,5,Double shot.jpeg
+89,Extras,إضافات,Pick (S/L),اختيار حجم,5 / 10 EGP,TRUE,6,Double shot.jpeg
+90,Extras,إضافات,Rollana,رولانا,10 EGP,TRUE,7,Double shot.jpeg
