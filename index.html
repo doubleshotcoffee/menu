@@ -4,9 +4,71 @@
     
 <head>
     <meta charset="UTF-8">
-    <title>Double Shot Cafe - Menu</title>
+    <title>Double Shot Cafe | كافيه دابل شوت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="Double shot.jpeg">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Double Shot Cafe Digital Menu - Explore Turkish Coffee, Espresso, Frappes, Smoothies, Fresh Juices, Hot and Cold Beverages. منيو كافيه دابل شوت التفاعلي لجميع المشروبات الساخنة والباردة والفرابيه.">
+    <meta name="keywords" content="Double Shot, Double Shot Cafe, دابل شوت, كافيه دابل شوت, منيو دابل شوت, Coffee, Espresso, Frappe, Smoothies, Beverages, Menu, Specialty Coffee">
+    <meta name="author" content="Double Shot Cafe">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://doubleshotcoffee.github.io/menu/">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="Double shot.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="Double shot.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="Double shot.jpeg">
+    <link rel="shortcut icon" href="Double shot.jpeg">
+    <meta name="msapplication-TileImage" content="Double shot.jpeg">
+    <meta name="msapplication-TileColor" content="#12100e">
+    <meta name="theme-color" content="#12100e">
+
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://doubleshotcoffee.github.io/menu/">
+    <meta property="og:title" content="Double Shot Cafe - Dynamic Digital Menu | كافيه دابل شوت">
+    <meta property="og:description" content="Discover our delicious drinks, Turkish Coffee, Espresso, Frappes, Smoothies, and Fresh Juices at Double Shot Cafe.">
+    <meta property="og:image" content="https://doubleshotcoffee.github.io/menu/Double%20shot.jpeg">
+    <meta property="og:site_name" content="Double Shot Cafe">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_EG">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://doubleshotcoffee.github.io/menu/">
+    <meta name="twitter:title" content="Double Shot Cafe - Dynamic Digital Menu">
+    <meta name="twitter:description" content="Explore our specialty coffee, fresh juices, frappes, and hot & cold beverages at Double Shot Cafe.">
+    <meta name="twitter:image" content="https://doubleshotcoffee.github.io/menu/Double%20shot.jpeg">
+
+    <!-- Structured Data (Schema.org JSON-LD for Cafe / Coffee Shop) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Double Shot Cafe",
+      "alternateName": "كافيه دابل شوت",
+      "image": "https://doubleshotcoffee.github.io/menu/Double%20shot.jpeg",
+      "logo": "https://doubleshotcoffee.github.io/menu/Double%20shot.jpeg",
+      "url": "https://doubleshotcoffee.github.io/menu/",
+      "servesCuisine": ["Coffee", "Beverages", "Smoothies", "Desserts"],
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "02:00"
+        }
+      ],
+      "menu": "https://doubleshotcoffee.github.io/menu/",
+      "hasMenu": {
+        "@type": "Menu",
+        "name": "Double Shot Cafe Live Menu",
+        "url": "https://doubleshotcoffee.github.io/menu/"
+      }
+    }
+    </script>
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap"
         rel="stylesheet">
@@ -384,12 +446,12 @@
 <body>
 
     <!-- LANGUAGE BUTTON -->
-    <button class="lang-btn" id="langToggle">AR</button>
+    <button class="lang-btn" id="langToggle" aria-label="Switch Language / تغيير اللغة">AR</button>
 
     <!-- HEADER -->
     <header>
-        <a href="#" class="logo-container">
-            <img src="Double shot.jpeg" alt="Double Shot Logo">
+        <a href="#" class="logo-container" aria-label="Double Shot Cafe Home">
+            <img src="Double shot.jpeg" alt="Double Shot Cafe Official Logo">
             <span class="logo-text">
                 <span class="en">Double Shot</span>
                 <span class="ar">دابل شوت</span>
@@ -400,7 +462,8 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-box">
-            <img src="Double shot.jpeg" alt="Double Shot Logo">
+            <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Double Shot Cafe - Dynamic Digital Menu | كافيه دابل شوت</h1>
+            <img src="Double shot.jpeg" alt="Double Shot Cafe Brand Logo">
         </div>
     </section>
 
@@ -717,8 +780,8 @@
     </footer>
 
     <!-- CONFIG AND APP SCRIPTS -->
-    <script src="js/config.js?v=1.8"></script>
-    <script src="js/app.js?v=1.8"></script>
+    <script src="js/config.js?v=1.9"></script>
+    <script src="js/app.js?v=1.9"></script>
     <script>
         const btn = document.getElementById('langToggle');
         let isAr = false;
