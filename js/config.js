@@ -1,6 +1,6 @@
 const CONFIG = {
-    // Google Sheets Direct Instant Export CSV API URL
-    API_URL: "https://docs.google.com/spreadsheets/d/1mgtBXJtD0srae9EReAy7BvMTK2E8PB6s9IlxZHBxop0/export?format=csv",
+    // Google Sheets Direct Instant Export CSV API URL (Tab gid=1240918041)
+    API_URL: "https://docs.google.com/spreadsheets/d/1mgtBXJtD0srae9EReAy7BvMTK2E8PB6s9IlxZHBxop0/export?format=csv&gid=1240918041",
 
     // Caching duration & revalidation
     CACHE_DURATION_MS: 0,
