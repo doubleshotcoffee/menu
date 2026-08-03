@@ -1,6 +1,6 @@
 const CONFIG = {
-    // Google Sheets Direct Live API URL
-    API_URL: "https://docs.google.com/spreadsheets/d/1mgtBXJtD0srae9EReAy7BvMTK2E8PB6s9IlxZHBxop0/gviz/tq?tqx=out:csv",
+    // Google Sheets Direct Instant Export CSV API URL
+    API_URL: "https://docs.google.com/spreadsheets/d/1mgtBXJtD0srae9EReAy7BvMTK2E8PB6s9IlxZHBxop0/export?format=csv",
 
     // Caching duration & revalidation
     CACHE_DURATION_MS: 0,
