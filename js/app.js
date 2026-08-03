@@ -66,6 +66,21 @@ async function initMenu() {
     }
 }
 
+const VALID_LOCAL_IMAGES = [
+    "Double shot.jpeg",
+    "اسبرسو.webp",
+    "اسموزي.jpg",
+    "ايس درينك.jpg",
+    "بوبا.jpg",
+    "زبادوه.jpg",
+    "صودا.jpg",
+    "عصير فريش.jpg",
+    "فرابيه.jpg",
+    "قهوه.jpg",
+    "مشروب ساخن.webp",
+    "هوت.jpg"
+];
+
 async function fetchBackgroundData() {
     if (!CONFIG.API_URL || CONFIG.API_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
         return; // Fallback stays active until URL is provided
@@ -74,7 +89,9 @@ async function fetchBackgroundData() {
     try {
         const response = await fetch(CONFIG.API_URL, { 
             method: "GET",
-            mode: "cors"
+            mode: "cors",
+            credentials: "omit",
+            redirect: "follow"
         });
         
         if (!response.ok) throw new Error(`HTTP status: ${response.status}`);
@@ -124,7 +141,10 @@ function renderMenu() {
         const category = categories[catKey];
         const keyLower = category.nameEn.toLowerCase();
         
-        let bgImg = category.imageKey || CATEGORY_IMAGES[keyLower] || "Double shot.jpeg";
+        let bgImg = category.imageKey;
+        if (!bgImg || !VALID_LOCAL_IMAGES.includes(bgImg)) {
+            bgImg = CATEGORY_IMAGES[keyLower] || "Double shot.jpeg";
+        }
         let catClass = CATEGORY_CLASSES[keyLower] || "coffee";
 
         const categoryElem = document.createElement('div');
