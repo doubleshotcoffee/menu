@@ -1,6 +1,6 @@
 const CONFIG = {
     // Google Apps Script API URL (Paste your Web App URL here after deploying Google Sheet script)
-    API_URL: "https://script.google.com/macros/s/AKfycbwDwY8gqqFpfJ9yLyluG1qHBsmG43n9nHiKiDIu6_EIv_MJyKSMQkn4vhD1p3vCTgl9rQ/exec",
+    API_URL: "https://script.google.com/macros/s/AKfycbwTaZLNF38R5jHEwiMu9y5VNqsBmqNB0DpZnCnXtiLL-gH4jpZtxswgiOFK6GOaWDyA/exec",
 
     // Caching duration & revalidation
     CACHE_DURATION_MS: 0,
