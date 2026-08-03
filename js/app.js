@@ -81,6 +81,80 @@ const VALID_LOCAL_IMAGES = [
     "هوت.jpg"
 ];
 
+function parseCSV(csvText) {
+    const lines = [];
+    let currentLine = [];
+    let currentCell = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+
+        if (char === '"') {
+            if (inQuotes && nextChar === '"') {
+                currentCell += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
+        } else if (char === ',' && !inQuotes) {
+            currentLine.push(currentCell.trim());
+            currentCell = '';
+        } else if ((char === '\r' || char === '\n') && !inQuotes) {
+            if (char === '\r' && nextChar === '\n') i++;
+            currentLine.push(currentCell.trim());
+            if (currentLine.some(cell => cell !== '')) {
+                lines.push(currentLine);
+            }
+            currentLine = [];
+            currentCell = '';
+        } else {
+            currentCell += char;
+        }
+    }
+
+    if (currentCell || currentLine.length > 0) {
+        currentLine.push(currentCell.trim());
+        if (currentLine.some(cell => cell !== '')) {
+            lines.push(currentLine);
+        }
+    }
+
+    if (lines.length < 2) return [];
+
+    const headers = lines[0].map(h => h.toLowerCase());
+    const items = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const row = lines[i];
+        const item = {};
+        headers.forEach((h, idx) => {
+            item[h] = row[idx] !== undefined ? row[idx] : '';
+        });
+
+        let avail = String(item.availability).toUpperCase();
+        let isAvailable = (avail === '' || avail === 'TRUE' || avail === '1' || item.availability === true);
+
+        if (isAvailable) {
+            items.push({
+                id: item.id,
+                category_en: item.category_en,
+                category_ar: item.category_ar,
+                name_en: item.name_en,
+                name_ar: item.name_ar,
+                price: item.price,
+                availability: isAvailable,
+                order: parseInt(item.order) || 0,
+                image_key: item.image_key
+            });
+        }
+    }
+
+    items.sort((a, b) => a.order - b.order);
+    return items;
+}
+
 async function fetchBackgroundData() {
     if (!CONFIG.API_URL || CONFIG.API_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
         return; // Fallback stays active until URL is provided
@@ -89,17 +163,28 @@ async function fetchBackgroundData() {
     try {
         const response = await fetch(CONFIG.API_URL, { 
             method: "GET",
-            mode: "cors",
-            credentials: "omit",
-            redirect: "follow"
+            cache: "no-store"
         });
         
         if (!response.ok) throw new Error(`HTTP status: ${response.status}`);
         
-        const result = await response.json();
-        if (result.error) throw new Error(result.error);
+        let newData = [];
+        const contentType = response.headers.get("content-type") || "";
 
-        const newData = result.data;
+        if (contentType.includes("json")) {
+            const result = await response.json();
+            if (result.error) throw new Error(result.error);
+            newData = result.data;
+        } else {
+            const text = await response.text();
+            if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+                const result = JSON.parse(text);
+                newData = result.data || result;
+            } else {
+                newData = parseCSV(text);
+            }
+        }
+
         if (newData && newData.length > 0) {
             const newDataString = JSON.stringify(newData);
             const oldDataString = localStorage.getItem('doubleshot_menuData');
