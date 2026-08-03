@@ -22,8 +22,8 @@ const CATEGORY_IMAGES = {
     "ركن السموذي": "اسموزي.jpg",
     "soda corner": "صودا.jpg",
     "ركن الصودا": "صودا.jpg",
-    "extras": "Double shot.jpeg",
-    "إضافات": "Double shot.jpeg"
+    "extras": "",
+    "إضافات": ""
 };
 
 const CATEGORY_CLASSES = {
@@ -226,8 +226,9 @@ function renderMenu() {
         const category = categories[catKey];
         const keyLower = category.nameEn.toLowerCase();
         
-        let bgImg = category.imageKey;
-        if (!bgImg || !VALID_LOCAL_IMAGES.includes(bgImg)) {
+        let isExtra = (keyLower === "extras" || keyLower === "إضافات");
+        let bgImg = isExtra ? "" : category.imageKey;
+        if (!isExtra && (!bgImg || !VALID_LOCAL_IMAGES.includes(bgImg))) {
             bgImg = CATEGORY_IMAGES[keyLower] || "Double shot.jpeg";
         }
         let catClass = CATEGORY_CLASSES[keyLower] || "coffee";
@@ -235,7 +236,7 @@ function renderMenu() {
         const categoryElem = document.createElement('div');
         categoryElem.className = `category ${catClass}`;
 
-        let headerStyle = bgImg ? `style="background-image: url('${bgImg}');"` : '';
+        let headerStyle = bgImg ? `style="background-image: url('${bgImg}');"` : 'style="background-image: none; background-color: #0b0a09;"';
 
         categoryElem.innerHTML = `
             <div class="category-header" ${headerStyle}>
