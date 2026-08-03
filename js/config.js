@@ -5,8 +5,8 @@ const CONFIG = {
     // Caching duration & revalidation
     CACHE_DURATION_MS: 0,
 
-    // Auto refresh interval in milliseconds (30 seconds)
-    AUTO_REFRESH_INTERVAL: 30000,
+    // Auto refresh interval in milliseconds (15 seconds for fast live updates)
+    AUTO_REFRESH_INTERVAL: 15000,
 
     // Auto-scroll settings
     AUTO_SCROLL: {
